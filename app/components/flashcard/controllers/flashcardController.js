@@ -28,7 +28,7 @@ angular.module('vocabFlashcardsControllers')
                 } else {
                     $scope.stats.review -= 1;
                 }
-                if ((Math.random() < 0.25 || $scope.stats.unseen == 0) && $scope.stats.review > 0) {
+                if ((Math.random() < 0.15 || $scope.stats.unseen == 0) && $scope.stats.review > 0) {
                     $scope.stats.reviewWords = shuffle($scope.stats.reviewWords);
                     next = {
                         word: $scope.stats.reviewWords[0],

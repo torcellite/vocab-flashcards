@@ -1,6 +1,6 @@
 <div ng-controller="FlashcardCtrl">
     <div layout="column" layout-align="center center" ng-show="!loadedWords">
-        <md-button class="accent-color text-primary-color" style="padding: 12px 24px 12px 24px;" ng-model="wordsFile" ngf-select ngf-multiple="false" accept="text/*">Open words file (.txt, .csv)</md-button>
+        <md-button class="accent-color text-primary-color" style="padding: 12px 48px 12px 48px;" ng-model="wordsFile" ngf-select ngf-multiple="false" accept="text/*">Open words file (.txt)</md-button>
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Choose a text file containing the words for which the flashcards need to be generated.</span>
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Sample <span class="md-caption">words.txt</span> file:</span>
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Akimbo<br>Avarice<br>Serendipitous<br></span>
