@@ -1,0 +1,40 @@
+{
+  "name": "vocab-flashcards",
+  "version": "1.0.0",
+  "authors": [
+    "Karthik Balakrishnan <karthik@torcellite.com>"
+  ],
+  "description": "Builds flashcards from the given list of words using vocabulary.com - Designed to help students who are writing SAT, GRE, GMAT, CAT and the other entrance tests.",
+  "keywords": [
+    "angularjs",
+    "flashcards",
+    "vocabulary"
+  ],
+  "license": "MIT",
+  "homepage": "http://vocabflashcards.torcellite.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-ui-router": "latest",
+    "ng-file-upload": "latest",
+    "angular-material": "~0.11.1",
+    "angular-aria": "~1.4.6",
+    "angular-sanitize": "~1.4.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest"
+  },
+  "appPath": "app",
+  "moduleName": "vocabFlashcardsApp",
+  "resolutions": {
+    "angular": "1.4.6"
+  }
+}

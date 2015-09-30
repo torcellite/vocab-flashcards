@@ -1,0 +1,325 @@
+@media (max-width: 600px) {
+    .main {
+        max-width: 400px;
+    }
+}
+.main {
+    max-width: 480px;
+    text-align: justify;
+}
+.section {
+    margin-bottom: 1em
+}
+.blurb {
+    color: #444;
+    overflow: hidden
+}
+.blurb .long {
+    line-height: 175%;
+    margin: .5em 0
+}
+.blurb .short i:first-of-type {
+    color: #438007;
+    font-style: normal
+}
+.blurb .short {
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-weight: 300
+}
+.definition .sectionHeader .word {
+    display: block;
+    font-weight: 300;
+    font-size: 2em
+}
+.definition .sectionHeader {
+    margin-bottom: .25em
+}
+h1 {
+    margin: 40px 0 20px 0;
+    letter-spacing: 0;
+    font-size: 8em;
+    text-transform: none;
+    color: black;
+    font-weight: 300;
+    display: block;
+    width: 100%;
+    display: block;
+    white-space: nowrap
+}
+.wordHeader {
+    position: relative;
+    overflow: hidden
+}
+.example {
+    font-style: italic;
+    color: #666;
+    margin: 1em;
+    font-size: 1.1em;
+    font-weight: 400
+}
+.example strong {
+    font-weight: normal
+}
+.definition h2 {
+    margin: 0;
+    font-size: 16px;
+    padding: 2px 0 10px 0
+}
+.definition h2 i {
+    color: #22558a
+}
+.definition h3 {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin: 0;
+    color: #333;
+    margin: 0;
+    padding: .5em 15px .5em 60px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd
+}
+.definition .sord1 h3 {
+    border-top: 0
+}
+.definition h3 .pos, .stackPane h3 .pos {
+    font-style: italic;
+    color: #666
+}
+.definition .pos .examples {
+    color: #999;
+    border-bottom: 1px dashed #999;
+    padding: 4px 0 4px 0
+}
+.definition .pos .linkedwords {
+    margin-bottom: 1em;
+    padding: 4px 0 4px 0;
+    border-bottom: 1px solid #999
+}
+.definition .group {
+    position: relative;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    border-top: 3px solid #666
+}
+.definition .ordinal {
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border-top: 1px solid black
+}
+.definition .ordinal.first {
+    border-top: 0;
+    margin-top: 1px
+}
+.definition .group .groupNumber:after {
+    content:'.'
+}
+.definition .group .groupNumber {
+    position: absolute;
+    color: black;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: 400;
+    font-size: 1.5em;
+    padding: 0;
+    text-align: center;
+    top: -1.4em;
+    left: 0
+}
+.definition .sense {
+    clear: left;
+    position: relative;
+    overflow: hidden
+}
+.collapsed .defContent {
+    display: none
+}
+.definition .pos .sense .pointers .pointertype {
+    color: #999
+}
+.definition .pos .sense .pointers .pointer {
+    margin-left: 10px
+}
+.definition .pos .sense .pointers .pointer .definition {
+    margin-left: 10px
+}
+.definition .pos .sense .pointers .pointer .examples {
+    margin-left: 10px
+}
+.definition .pos .sense .pointers .pointer .linkedwords {
+    margin-left: 10px
+}
+.definition dd {
+    margin: 1em 0
+}
+.definition .sense dl dd .definition {
+    font-size: 90%;
+    font-weight: 400;
+    background-image: none;
+    padding: 0 5px 0 0;
+    margin: .25em 0
+}
+.definition .sense h4 {
+    display: inline;
+    margin: 0;
+    font-size: 90%
+}
+.definition .sense dl {
+    margin: .5em 0
+}
+.definition dl {
+    position: relative
+}
+.definition dd {
+    padding-left: 90px;
+    padding-right: 15px
+}
+.definition dt {
+    width: 70px;
+    color: #666;
+    font-size: .75em;
+    font-weight: 400;
+    float: left;
+    margin-left: 15px;
+    padding-top: .25em
+}
+.definition dl.expanded .less {
+    display: block
+}
+.definition dl.expanded .more {
+    display: none
+}
+.definition dd.less {
+    display: none
+}
+.definition dd .expander {
+    font-style: italic;
+    font-size: 90%
+}
+.definition .similar .word {
+    display: block;
+    padding-left: 10px;
+    height: 60px;
+    width: 100%;
+    line-height: 60px;
+    border-bottom: 1px solid #dcdcdc;
+    box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    position: relative
+}
+.definition .similar .thumb {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 100px;
+    height: 59px;
+    position: absolute;
+    top: 0;
+    right: 0
+}
+a.anchor {
+    text-decoration: none;
+    padding: 0 6px 0 6px;
+    font-size: .75em;
+    color: white;
+    line-height: 21px;
+    font-style: italic;
+    position: absolute;
+    top: .8em;
+    left: 13px;
+    display: block;
+    border-radius: 4px;
+    min-width: 21px;
+    text-align: center
+}
+.pos_n a.anchor {
+    background-color: #e3412f
+}
+.pos_v a.anchor {
+    background-color: #539007
+}
+.pos_a a.anchor {
+    background-color: #f8b002
+}
+.pos_r a.anchor {
+    background-color: #684b9d
+}
+
+.green {
+    background-color: #4db538
+}
+.red {
+    background-color: #b23737
+}
+.blue {
+    background-color: #3769b2
+}
+section:after {
+    content:".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+.section {
+    margin-bottom: 2em
+}
+.section>.sectionHeader {
+    font-weight: 300;
+    margin: 0 0 .5em 0;
+    color: #444;
+    border-top: 1px solid #eee;
+    border-bottom: 0;
+    padding: 3px 0;
+    font-size: 1em
+}
+.clearfloat:after, .clearfloat:before, .grid:before, .grid:after {
+    display: table;
+    line-height: 0;
+    content:"";
+    clear: both
+}
+.grid>.col {
+    float: left;
+    margin-left: 5%;
+    width: 100%
+}
+.grid .col:FIRST-CHILD {
+    margin-left: 0
+}
+.grid-2>.col {
+    width: 47.5%
+}
+.grid-3>.col {
+    width: 30%
+}
+.grid-3>.col.span-2 {
+    width: 65%
+}
+.grid-4>.col {
+    width: 21.25%
+}
+.grid-4>.col.span-2 {
+    width: 47.5%
+}
+.grid-4>.col.span-3 {
+    width: 73.75%
+}
+.grid-5>.col {
+    width: 16%
+}
+.grid-5>.col.span-2 {
+    width: 37%
+}
+.grid-5>.col.span-3 {
+    width: 58%
+}
+.grid-5>.col.span-4 {
+    width: 79%
+}
+.grid-2>.col.span-2, .grid-3>.col.span-3, .grid-4>.col.span-4, .grid-5>.col.span-5 {
+    width: 100%
+}
