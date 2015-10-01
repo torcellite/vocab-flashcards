@@ -75,6 +75,12 @@ body {
     width: 100%;
 }
 
+.loading-gif {
+    width: 32px;
+    height: 32px;
+    margin: 16px;
+}
+
 #ui-view {
     padding: 24px 48px 24px 48px;
 }

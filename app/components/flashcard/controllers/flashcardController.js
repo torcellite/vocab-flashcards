@@ -60,8 +60,9 @@ angular.module('vocabFlashcardsControllers')
                         $scope.current = {
                             word: next.word,
                             definition: next.definition,
-                            showMeaning: false,
-                            addToReview: false
+                            showDefinition: false,
+                            addToReview: false,
+                            lookingUp: true
                         };
                         next = null;
                         var classes = $document[0].getElementById('flashcard').className;
@@ -73,12 +74,12 @@ angular.module('vocabFlashcardsControllers')
                 }
             };
 
-            $scope.showMeaning = function() {
+            $scope.showDefinition = function() {
                 var classes = $document[0].getElementById('flashcard').className
                     .replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
                 classes += ' flip-flashcard-back';
                 $document[0].getElementById('flashcard').className = classes;
-                $scope.current.showMeaning = true;
+                $scope.current.showDefinition = true;
                 $scope.current.addToReview = true;
             };
 
@@ -87,7 +88,7 @@ angular.module('vocabFlashcardsControllers')
                     .replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
                 classes += ' flip-flashcard-front';
                 $document[0].getElementById('flashcard').className = classes;
-                $scope.current.showMeaning = false;
+                $scope.current.showDefinition = false;
             };
 
             $scope.$watch('wordsFile', function() {
@@ -112,8 +113,9 @@ angular.module('vocabFlashcardsControllers')
                     $scope.current = {
                         word: $scope.stats.unseenWords[0],
                         definition: loadMeaning($scope.stats.unseenWords[0]),
-                        showMeaning: false,
-                        addToReview: false
+                        showDefinition: false,
+                        addToReview: false,
+                        lookingUp: true
                     };
 
                     $scope.stats.unseenWords.shift();
@@ -148,18 +150,25 @@ angular.module('vocabFlashcardsControllers')
 
             function loadMeaning(word) {
                 if (word in definitions) {
+                    if (word === $scope.current.word && definitions[word] !== 'Loading...') {
+                        $scope.current.lookingUp = false;
+                    } else if (word === $scope.current.word && definitions[word] === 'Loading...') {
+                        $scope.current.lookingUp = true;
+                    }
                     return definitions[word];
                 } else {
                     DefineWord.get(word).then(function successCallback(res) {
                         definitions[word] = res.data;
-                        if ($scope.current.word == word) {
+                        if ($scope.current.word === word) {
                             $scope.current.definition = definitions[word];
+                            $scope.current.lookingUp = false;
                         }
                     }, function errorCallback(res) {
                         console.error(res.status + ' Could not get definition for ' + word + '.');
                         definitions[word] = 'Could not get definition for ' + word + '.';
-                        if ($scope.current.word == word) {
+                        if ($scope.current.word === word) {
                             $scope.current.definition = definitions[word];
+                            $scope.current.lookingUp = false;
                         }
                     });
                 }
