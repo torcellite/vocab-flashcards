@@ -12,7 +12,7 @@ angular.module('vocabFlashcardsControllers')
                 showDefinition: false,
                 addToReview: false,
                 word: '',
-                definition: '',
+                definition: ''
             };
 
             $scope.nextWord = function(addToReview) {

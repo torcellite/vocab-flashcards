@@ -10,7 +10,7 @@ angular.module('vocabFlashcardsApp')
                 .common['X-Requested-With'] = 'XMLHttpRequest';
 
             $mdThemingProvider.theme('default')
-                .primaryPalette('cyan')
+                .primaryPalette('yellow')
                 .accentPalette('deep-purple');
         }
     ]);
