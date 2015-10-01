@@ -8,6 +8,12 @@ angular.module('vocabFlashcardsControllers')
             var words = [];
             var definitions = {};
             var next = {};
+            $scope.current = {
+                showDefinition: false,
+                addToReview: false,
+                word: '',
+                definition: '',
+            };
 
             $scope.nextWord = function(addToReview) {
                 var classes = $document[0].getElementById('flashcard').className;
@@ -57,13 +63,10 @@ angular.module('vocabFlashcardsControllers')
                     showFinishedToast();
                 } else {
                     $timeout(function() {
-                        $scope.current = {
-                            word: next.word,
-                            definition: next.definition,
-                            showDefinition: false,
-                            addToReview: false,
-                            lookingUp: true
-                        };
+                        $scope.current.word = next.word;
+                        $scope.current.definition = next.definition;
+                        $scope.current.showDefinition = false;
+                        $scope.current.addToReview = false;
                         next = null;
                         var classes = $document[0].getElementById('flashcard').className;
                         classes = classes.replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
@@ -110,13 +113,11 @@ angular.module('vocabFlashcardsControllers')
                     };
                     $scope.numOfWords = words.length;
 
-                    $scope.current = {
-                        word: $scope.stats.unseenWords[0],
-                        definition: loadMeaning($scope.stats.unseenWords[0]),
-                        showDefinition: false,
-                        addToReview: false,
-                        lookingUp: true
-                    };
+                    $scope.lookingUpCurrent = true;
+                    $scope.current.word = $scope.stats.unseenWords[0];
+                    $scope.current.definition = loadMeaning($scope.stats.unseenWords[0]);
+                    $scope.current.showDefinition = false;
+                    $scope.current.addToReview =     false;
 
                     $scope.stats.unseenWords.shift();
                     $scope.stats.unseen = $scope.stats.unseenWords.length + 1;
@@ -150,27 +151,32 @@ angular.module('vocabFlashcardsControllers')
 
             function loadMeaning(word) {
                 if (word in definitions) {
+                    console.log(definitions[word]);
                     if (word === $scope.current.word && definitions[word] !== 'Loading...') {
-                        $scope.current.lookingUp = false;
+                        $scope.lookingUpCurrent = false;
                     } else if (word === $scope.current.word && definitions[word] === 'Loading...') {
-                        $scope.current.lookingUp = true;
+                        $scope.lookingUpCurrent = true;
                     }
                     return definitions[word];
                 } else {
+                    $scope.lookingUpCurrent = true;
                     DefineWord.get(word).then(function successCallback(res) {
-                        definitions[word] = res.data;
-                        if ($scope.current.word === word) {
-                            $scope.current.definition = definitions[word];
-                            $scope.current.lookingUp = false;
-                        }
-                    }, function errorCallback(res) {
-                        console.error(res.status + ' Could not get definition for ' + word + '.');
-                        definitions[word] = 'Could not get definition for ' + word + '.';
-                        if ($scope.current.word === word) {
-                            $scope.current.definition = definitions[word];
-                            $scope.current.lookingUp = false;
-                        }
-                    });
+                            definitions[word] = res.data;
+                            if ($scope.current.word === word) {
+                                $scope.current.definition = definitions[word] + '<span class="md-caption">This definition is displayed from ' +
+                                    '<a class="hyperlink" target="_blank" href="http://vocabulary.com/dictionary/' +
+                                    word + '">vocabulary.com/dictionary/' + word + '</a></span><br><br>';
+                                $scope.lookingUpCurrent = false;
+                            }
+                        },
+                        function errorCallback(res) {
+                            console.error(res.status + ' Could not get definition for ' + word + '.');
+                            definitions[word] = 'Could not get definition for ' + word + '.';
+                            if ($scope.current.word === word) {
+                                $scope.current.definition = definitions[word];
+                                $scope.lookingUpCurrent = false;
+                            }
+                        });
                 }
                 return 'Loading...';
             }

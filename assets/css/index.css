@@ -7,6 +7,19 @@ body {
     padding: 0px;
 }
 
+.hyperlink {
+    text-decoration: none;
+    color: #DDD;
+}
+
+.hyperlink:hover {
+    color: #CCC;
+}
+
+.hyperlink:visited {
+    color: #BBB;
+}
+
 @media (max-width: 600px) {
     .flashcard-container {
         max-width: 480px;
