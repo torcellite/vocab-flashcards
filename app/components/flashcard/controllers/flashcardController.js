@@ -28,7 +28,7 @@ angular.module('vocabFlashcardsControllers')
                 } else {
                     $scope.stats.review -= 1;
                 }
-                if ((Math.random() < 0.15 || $scope.stats.unseen == 0) && $scope.stats.review > 0) {
+                if ((Math.random() < 0.15 || $scope.stats.unseen === 0) && $scope.stats.review > 0) {
                     $scope.stats.reviewWords = shuffle($scope.stats.reviewWords);
                     next = {
                         word: $scope.stats.reviewWords[0],
@@ -36,8 +36,8 @@ angular.module('vocabFlashcardsControllers')
                     };
                     $scope.stats.reviewWords.shift();
                     $scope.stats.review = $scope.stats.reviewWords.length;
-                    if ($scope.stats.unseen == 0)
-                        $scope.stats.review += 1 // +1 for the word being displayed
+                    if ($scope.stats.unseen === 0)
+                        $scope.stats.review += 1; // +1 for the word being displayed
                     else
                         $scope.stats.unseen += 1;
                     reviewWordChosen = true;
@@ -51,7 +51,7 @@ angular.module('vocabFlashcardsControllers')
                     $scope.stats.unseenWords.shift();
                     $scope.stats.unseen = $scope.stats.unseenWords.length + 1; // +1 for the word being displayed
                 }
-                if ($scope.stats.unseen == 0 && $scope.stats.review == 0 && next === null) {
+                if ($scope.stats.unseen === 0 && $scope.stats.review === 0 && next === null) {
                     $scope.done = true;
                     $scope.loadedWords = false;
                     showFinishedToast();
@@ -62,7 +62,7 @@ angular.module('vocabFlashcardsControllers')
                             definition: next.definition,
                             showMeaning: false,
                             addToReview: false
-                        }
+                        };
                         next = null;
                         var classes = $document[0].getElementById('flashcard').className;
                         classes = classes.replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
@@ -77,7 +77,6 @@ angular.module('vocabFlashcardsControllers')
                 var classes = $document[0].getElementById('flashcard').className
                     .replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
                 classes += ' flip-flashcard-back';
-                console.log(classes);
                 $document[0].getElementById('flashcard').className = classes;
                 $scope.current.showMeaning = true;
                 $scope.current.addToReview = true;
@@ -124,7 +123,7 @@ angular.module('vocabFlashcardsControllers')
                         word: $scope.stats.unseenWords[1],
                         definition: loadMeaning($scope.stats.unseenWords[1])
                     };
-                }
+                };
             });
 
             function shuffle(array) {
@@ -158,7 +157,7 @@ angular.module('vocabFlashcardsControllers')
                         }
                     }, function errorCallback(res) {
                         console.error(res.status + ' Could not get definition for ' + word + '.');
-                        definition[word] = 'Could not get definition for ' + word + '.';
+                        definitions[word] = 'Could not get definition for ' + word + '.';
                         if ($scope.current.word == word) {
                             $scope.current.definition = definitions[word];
                         }
@@ -175,7 +174,7 @@ angular.module('vocabFlashcardsControllers')
                     .position('bottom left')
                     .hideDelay(5000)
                 );
-            };
+            }
 
 
         }

@@ -7,6 +7,6 @@ angular.module('vocabFlashcardsServices')
                 get: function(word) {
                     return $http.get('http://localhost:3000/define/' + word);
                 }
-            }
+            };
         }
     ]);

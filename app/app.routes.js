@@ -6,7 +6,7 @@ angular.module('vocabFlashcardsApp')
     .config(['$stateProvider', '$urlRouterProvider',
         function($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/flashcards');
 
             $stateProvider.
             state('flashcards', {

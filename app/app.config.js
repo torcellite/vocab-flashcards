@@ -7,7 +7,7 @@ angular.module('vocabFlashcardsApp')
         function($httpProvider, $mdThemingProvider) {
             $httpProvider.defaults
                 .headers
-                .common["X-Requested-With"] = 'XMLHttpRequest';
+                .common['X-Requested-With'] = 'XMLHttpRequest';
 
             $mdThemingProvider.theme('default')
                 .primaryPalette('cyan')
