@@ -9,4 +9,13 @@ angular.module('vocabFlashcardsServices')
                 }
             };
         }
+    ])
+    .factory('SampleWords', ['$http',
+        function($http) {
+        	return {
+        		load: function() {
+        			return $http.get('../assets/txt/sample_words.txt');
+        		}
+        	}
+        }
     ]);

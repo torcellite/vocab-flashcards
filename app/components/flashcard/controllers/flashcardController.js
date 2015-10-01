@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('vocabFlashcardsControllers')
-    .controller('FlashcardCtrl', ['$scope', '$document', '$timeout', '$mdToast', 'DefineWord',
-        function($scope, $document, $timeout, $mdToast, DefineWord) {
+    .controller('FlashcardCtrl', ['$scope', '$document', '$timeout', '$mdToast', 'DefineWord', 'SampleWords',
+        function($scope, $document, $timeout, $mdToast, DefineWord, SampleWords) {
             $scope.loadedWords = false;
 
             var words = [];
@@ -94,11 +94,46 @@ angular.module('vocabFlashcardsControllers')
                 $scope.current.showDefinition = false;
             };
 
+            $scope.generateSampleFlashcards = function() {
+                SampleWords.load().then(function successCallback(res) {
+                        words = res.data.split('\n');
+                        $scope.loadedWords = true;
+                        $scope.done = false;
+                        $scope.stats = {
+                            review: 0,
+                            known: 0,
+                            unseen: words.length,
+                            reviewWords: [],
+                            knownWords: [],
+                            unseenWords: words.slice(0)
+                        };
+                        $scope.numOfWords = words.length;
+
+                        $scope.lookingUpCurrent = true;
+                        $scope.current.word = $scope.stats.unseenWords[0];
+                        $scope.current.definition = loadMeaning($scope.stats.unseenWords[0]);
+                        $scope.current.showDefinition = false;
+                        $scope.current.addToReview = false;
+
+                        $scope.stats.unseenWords.shift();
+                        $scope.stats.unseen = $scope.stats.unseenWords.length + 1;
+
+                        next = {
+                            word: $scope.stats.unseenWords[1],
+                            definition: loadMeaning($scope.stats.unseenWords[1])
+                        };
+                    },
+                    function errorCallback(res) {
+                        console.log('Could not load sample_words.txt, try uploading your words file.');
+                    });
+            }
+
             $scope.$watch('wordsFile', function() {
                 if ($scope.wordsFile === undefined || $scope.wordsFile === null)
                     return;
                 var read = new FileReader();
-                read.readAsBinaryString($scope.wordsFile);
+                read.readAsText($scope.wordsFile);
+                console.log($scope.wordsFile);
                 read.onloadend = function() {
                     words = read.result.split('\n');
                     $scope.loadedWords = true;
@@ -117,7 +152,7 @@ angular.module('vocabFlashcardsControllers')
                     $scope.current.word = $scope.stats.unseenWords[0];
                     $scope.current.definition = loadMeaning($scope.stats.unseenWords[0]);
                     $scope.current.showDefinition = false;
-                    $scope.current.addToReview =     false;
+                    $scope.current.addToReview = false;
 
                     $scope.stats.unseenWords.shift();
                     $scope.stats.unseen = $scope.stats.unseenWords.length + 1;

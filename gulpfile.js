@@ -107,8 +107,8 @@ gulp.task('minifyHTML', function() {
 
 // copy certain files and folders as is
 gulp.task('copy', function() {
-    gulp.src('bower.json')
-        .pipe(gulp.dest('dist'));
+    gulp.src('assets/txt/**/*')
+        .pipe(gulp.dest('dist/assets/txt'));
 });
 
 gulp.task('build', ['compileJS', 'minifyCSS', 'imagemin', 'minifyHTML', 'copy'],

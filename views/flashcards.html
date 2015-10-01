@@ -4,6 +4,7 @@
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Choose a text file containing the words for which the flashcards need to be generated.</span>
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Sample <span class="md-caption">words.txt</span> file:</span>
         <span class="secondary-text-color md-body-1" style="margin-top: 24px; max-width: 260px; text-align: justify;">Akimbo<br>Avarice<br>Serendipitous<br></span>
+        <md-button class="accent-color text-primary-color" style="margin-top: 24px; padding: 12px 20px 12px 20px;" ng-click="generateSampleFlashcards()">Generate sample flashcards</md-button>
     </div>
     <div layout="column" layout-align="center" ng-show="loadedWords">
         <div flex layout="row" layout-align="center center">
@@ -32,7 +33,7 @@
                 <md-card id="flashcard" class="flashcard">
                     <span class="flashcard-word md-display-3 secondary-text-color" ng-show="!current.showDefinition">{{current.word}}</span>
                     <div class="flashcard-meaning" ng-show="current.showDefinition && !lookingUpCurrent" ng-bind-html="current.definition"></div>
-                    <div layout="column" layout-align="center center" class="flashcard-meaning" ng-show="current.showDefinition && lookingUpCurrent"><span class="md-body-2">Hold on, looking up the dictionary...</span><img src="../assets/img/loading.gif" style="width: 32px; height: 32px; margin: 16px;"></div>
+                    <div layout="column" layout-align="center center" class="flashcard-meaning" ng-show="current.showDefinition && lookingUpCurrent"><span class="md-body-2">Hold on, looking up {{current.word}} in the dictionary...</span><img src="../assets/img/loading.gif" style="width: 32px; height: 32px; margin: 16px;"></div>
                 </md-card>
                 <md-button class="flashcard-button md-button md-raised default-primary-color text-primary-color" ng-click="nextWord(false)" ng-show="!current.addToReview">I know this word!</md-button>
                 <md-button class="flashcard-button md-button md-raised default-primary-color text-primary-color" ng-click="nextWord(true)" ng-show="current.addToReview">Next</md-button>
