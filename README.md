@@ -7,7 +7,7 @@ AngularJS client that helps generate flashcards from a given list of words (sepa
 ###### Needed right away
 - Cleaner theme
 - Write tests (unit and integration)
-- Add new dictionaries (currently supports vocabulary.com - definitions are obtained from the backend)
+- Add new dictionaries (currently supports [vocabulary.com][vocab.com] - definitions are obtained from the backend)
  
 ###### Nothing urgent
 * Integrate social media so that people can share word lists
@@ -17,4 +17,5 @@ AngularJS client that helps generate flashcards from a given list of words (sepa
   - If you're customizing the design/theme, please attach screenshots.
   - Fork and perform a pull request when ready; please **make sure that all the tests pass** before making a pull request.
 
-[appLink]:<vocabflashcards.torcellite.com>
+[appLink]:<http://vocabflashcards.torcellite.com>
+[vocab.com]:<https://vocabulary.com>
