@@ -2,18 +2,6 @@
     .main {
         max-width: 400px;
     }
-    /*.blurb .short,
-    .definition .sectionHeader .word,
-    h1,
-    .example,
-    .example strong,
-    .definiton h3,
-    .definition .group .groupNumber,
-    .section>.sectionHeader,
-    .definition dt,
-    .definition .sense dl dd .definition {
-        font-size: 24px !important;
-    }*/
     .blurb .short {
         font-size: 16px !important;
     }

@@ -79,8 +79,8 @@ body {
 }
 
 .flashcard-meaning {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .flashcard-button {

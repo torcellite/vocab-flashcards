@@ -10,7 +10,6 @@ angular.module('vocabFlashcardsControllers')
             var next = {};
             $scope.current = {
                 showDefinition: false,
-                addToReview: false,
                 word: '',
                 definition: ''
             };
@@ -66,7 +65,6 @@ angular.module('vocabFlashcardsControllers')
                         $scope.current.word = next.word;
                         $scope.current.definition = next.definition;
                         $scope.current.showDefinition = false;
-                        $scope.current.addToReview = false;
                         next = null;
                         var classes = $document[0].getElementById('flashcard').className;
                         classes = classes.replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
@@ -80,16 +78,15 @@ angular.module('vocabFlashcardsControllers')
             $scope.showDefinition = function() {
                 var classes = $document[0].getElementById('flashcard').className
                     .replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
-                classes += ' flip-flashcard-back';
+                classes = 'flip-flashcard-back ' + classes;
                 $document[0].getElementById('flashcard').className = classes;
                 $scope.current.showDefinition = true;
-                $scope.current.addToReview = true;
             };
 
             $scope.showWord = function() {
                 var classes = $document[0].getElementById('flashcard').className
                     .replace(/(?:^|\s)flip-flashcard-[a-z]+(?!\S)/g, '');
-                classes += ' flip-flashcard-front';
+                classes = 'flip-flashcard-front ' + classes;
                 $document[0].getElementById('flashcard').className = classes;
                 $scope.current.showDefinition = false;
             };
@@ -113,7 +110,6 @@ angular.module('vocabFlashcardsControllers')
                         $scope.current.word = $scope.stats.unseenWords[0];
                         $scope.current.definition = loadMeaning($scope.stats.unseenWords[0]);
                         $scope.current.showDefinition = false;
-                        $scope.current.addToReview = false;
 
                         $scope.stats.unseenWords.shift();
                         $scope.stats.unseen = $scope.stats.unseenWords.length + 1;
@@ -152,7 +148,6 @@ angular.module('vocabFlashcardsControllers')
                     $scope.current.word = $scope.stats.unseenWords[0];
                     $scope.current.definition = loadMeaning($scope.stats.unseenWords[0]);
                     $scope.current.showDefinition = false;
-                    $scope.current.addToReview = false;
 
                     $scope.stats.unseenWords.shift();
                     $scope.stats.unseen = $scope.stats.unseenWords.length + 1;
@@ -202,6 +197,8 @@ angular.module('vocabFlashcardsControllers')
                                     '<a class="hyperlink" target="_blank" href="http://vocabulary.com/dictionary/' +
                                     word + '">vocabulary.com/dictionary/' + word + '</a></span><br><br>';
                                 $scope.lookingUpCurrent = false;
+                                console.log($scope.current.showDefinition);
+                                console.log($scope.lookingUpCurrent);
                             }
                         },
                         function errorCallback(res) {
