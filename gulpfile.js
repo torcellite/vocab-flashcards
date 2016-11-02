@@ -24,7 +24,6 @@ gulp.task('jshint', function() {
             base: 'app'
         })
         .pipe(jshint())
-        .pipe(commentStrip())
         .pipe(jshint.reporter('default'));
 });
 
@@ -64,6 +63,7 @@ gulp.task('compileJS', function() {
             continueWithWarnings: true
         }))
         .pipe(replace('http://localhost:3000', 'http://vocabflashcards.torcellite.com:3000'))
+        .pipe(commentStrip())
         .pipe(gulp.dest(jsDst));
 });
 
