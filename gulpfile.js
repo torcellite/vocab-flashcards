@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
     commentStrip = require('gulp-strip-comments'),
+    debugStrip = require('gulp-strip-debug'),
     changed = require('gulp-changed'),
     imagemin = require('gulp-imagemin'),
     minifyCSS = require('gulp-minify-css'),
@@ -64,6 +65,7 @@ gulp.task('compileJS', function() {
         }))
         .pipe(replace('http://localhost:3000', 'http://vocabflashcards.torcellite.com:3000'))
         .pipe(commentStrip())
+        .pipe(debugStrip())
         .pipe(gulp.dest(jsDst));
 });
 
