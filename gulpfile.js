@@ -3,13 +3,15 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
+    commentStrip = require('gulp-strip-comments'),
     changed = require('gulp-changed'),
     imagemin = require('gulp-imagemin'),
     minifyCSS = require('gulp-minify-css'),
     ngAnnotate = require('gulp-ng-annotate'),
     closureCompiler = require('gulp-closure-compiler'),
     htmlmin = require('gulp-html-minifier'),
-    replace = require('gulp-replace');
+    replace = require('gulp-replace'),
+    browserSync = require('browser-sync');
 
 
 // JSHint task
@@ -22,6 +24,7 @@ gulp.task('jshint', function() {
             base: 'app'
         })
         .pipe(jshint())
+        .pipe(commentStrip())
         .pipe(jshint.reporter('default'));
 });
 
@@ -60,7 +63,7 @@ gulp.task('compileJS', function() {
             },
             continueWithWarnings: true
         }))
-        .pipe(replace('localhost:3000', 'sleepy-crag-4011.herokuapp.com'))
+        .pipe(replace('http://localhost:3000', 'http://vocabflashcards.torcellite.com'))
         .pipe(gulp.dest(jsDst));
 });
 
@@ -109,6 +112,21 @@ gulp.task('minifyHTML', function() {
 gulp.task('copy', function() {
     gulp.src('assets/txt/**/*')
         .pipe(gulp.dest('dist/assets/txt'));
+});
+
+gulp.task('browser-sync', function() {
+    browserSync.init({
+      server: {
+        baseDir: "./"
+      }
+    });
+});
+
+gulp.task('watch', ['browser-sync'], function() {
+    gulp.watch('app/**/*').on('change', browserSync.reload);
+    gulp.watch('assets/**/*').on('change', browserSync.reload);
+    gulp.watch('views/**/*').on('change', browserSync.reload);
+    gulp.watch('*.html').on('change', browserSync.reload);
 });
 
 gulp.task('build', ['compileJS', 'minifyCSS', 'imagemin', 'minifyHTML', 'copy'],
